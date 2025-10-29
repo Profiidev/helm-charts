@@ -45,6 +45,18 @@ entries:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.12/vault-auto-unseal-v0.1.12.tgz
     version: v0.1.12
   - apiVersion: v2
+    created: "2025-10-29T18:16:50.13589514Z"
+    description: Automatic unseal for HashiCorp Vault.
+    digest: 6891be77c0dfbf66c4f009a3ca0113e9a8f90f7bd89dcd624f70709e28d98246
+    maintainers:
+    - email: mail@profidev.io
+      name: ProfiDev
+    name: vault-auto-unseal
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.1/vault-auto-unseal-v0.1.1.tgz
+    version: v0.1.1
+  - apiVersion: v2
     created: "2025-10-29T18:12:18.837441452Z"
     description: Automatic unseal for HashiCorp Vault.
     digest: 73a8b164ae9ecf1b68b6846733180b5fb85092664ae691875446921d4fa3343a
@@ -56,4 +68,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2025-10-29T18:12:18.837449557Z"
+generated: "2025-10-29T18:16:50.135910629Z"
