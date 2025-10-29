@@ -1,0 +1,47 @@
+apiVersion: v1
+entries:
+  auto-clean-bot:
+  - apiVersion: v2
+    created: "2025-10-29T17:39:02.922093365Z"
+    description: A Bot to automatically clean discord messages after a certain time
+      from channels.
+    digest: c9d821b38f20c5a90a4557a1010bab494f2791a6e7517eede8a2d854237ee3f1
+    name: auto-clean-bot
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/auto-clean-bot-v0.1.0/auto-clean-bot-v0.1.0.tgz
+    version: v0.1.0
+  positron:
+  - apiVersion: v2
+    created: "2025-10-29T17:39:03.109936216Z"
+    description: A Personal Website.
+    digest: 9b355bbaa4003688a1999c397e79d45cd4bff92529ec72cf6c19925001ba6cc5
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-v0.1.20/positron-v0.1.20.tgz
+    version: v0.1.20
+  proton:
+  - apiVersion: v2
+    created: "2025-10-29T17:39:03.277118832Z"
+    description: A Minecraft Launcher.
+    digest: 37a2bf5adc4e65b58e760604157b076ccfec5de93e010da72445b333903619b7
+    name: proton
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/proton-v0.2.7/proton-v0.2.7.tgz
+    version: v0.2.7
+  vault-auto-unseal:
+  - apiVersion: v2
+    created: "2025-10-29T17:39:03.497224731Z"
+    description: Automatic unseal for HashiCorp Vault.
+    digest: 272cb76a7d9b3f6e026a7de928e5d87ffa717008ba5ac3fae1f104f3b1fc53b7
+    maintainers:
+    - email: mail@profidev.io
+      name: ProfiDev
+    name: vault-auto-unseal
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.12/vault-auto-unseal-v0.1.12.tgz
+    version: v0.1.12
+generated: "2025-10-29T17:39:03.49722942Z"
