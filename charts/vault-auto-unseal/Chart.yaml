@@ -1,6 +1,6 @@
 apiVersion: v2
 name: vault-auto-unseal
-description: Automatic unseal for HashiCorp Vault
+description: Automatic unseal for HashiCorp Vault.
 type: application
 version: v0.1.12
 maintainers:
