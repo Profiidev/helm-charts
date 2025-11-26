@@ -2,14 +2,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}-backend
+  name: {{ .Chart.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
-  replicas: {{ .Values.backend.replicaCount | default 1 }}
+  replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}-backend
+      app: {{ .Chart.Name }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,8 +18,8 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}-backend
-        {{- with .Values.backend.podLabels }}
+        app: {{ .Chart.Name }}
+        {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
@@ -27,10 +27,10 @@ spec:
         - tty: true
           envFrom:
             - secretRef:
-                name: {{ .Chart.Name }}-backend
-          image: ghcr.io/profiidev/positron/{{ .Chart.Name }}-backend:{{ .Chart.Version }}
+                name: {{ .Chart.Name }}
+          image: ghcr.io/profiidev/positron/{{ .Chart.Name }}:{{ .Chart.Version }}
           imagePullPolicy: Always
-          name: {{ .Chart.Name }}-backend
+          name: {{ .Chart.Name }}
           resources:
             limits:
               cpu: 1000m
@@ -38,16 +38,12 @@ spec:
             requests:
               cpu: 200m
               memory: 128Mi
-          {{- with .Values.backend.extraVolumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-      {{- with .Values.backend.extraVolumes }}
+      {{- with .Values.extraVolumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
       {{- end }}

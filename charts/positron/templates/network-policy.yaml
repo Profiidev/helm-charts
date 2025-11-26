@@ -2,13 +2,14 @@
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: {{ .Chart.Name }}-frontend-ingress
+  name: {{ .Chart.Name }}-ingress
   namespace: {{ .Release.Namespace }}
 spec:
   order: 10
-  selector: app == '{{ .Chart.Name }}-frontend'
+  selector: app == '{{ .Chart.Name }}'
   types:
     - Ingress
+    - Egress
   ingress:
     - action: Allow
       protocol: TCP
@@ -17,4 +18,14 @@ spec:
         selector: app.kubernetes.io/name == 'rke2-ingress-nginx'
       destination:
         ports:
-          - 3000
+          - 8000
+  egress:
+    - action: Allow
+      protocol: TCP
+      destination:
+        notNets:
+          - 10.0.0.0/8
+          - 172.16.0.0/12
+          - 192.168.0.0/16
+        ports:
+          - 443
