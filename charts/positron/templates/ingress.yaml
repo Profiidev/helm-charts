@@ -2,28 +2,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Chart.Name }}-frontend
+  name: {{ .Chart.Name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    name: {{ .Chart.Name }}-frontend
-  {{- with .Values.frontend.ingress.annotations }}
+    name: {{ .Chart.Name }}
+  {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  ingressClassName: {{ .Values.frontend.ingress.className | default "nginx" }}
+  ingressClassName: {{ .Values.ingress.className | default "nginx" }}
   rules:
-    - host: {{ .Values.frontend.ingress.host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: {{ .Chart.Name }}-frontend
+                name: {{ .Chart.Name }}
                 port:
-                  number: 3000
-  {{- with .Values.frontend.ingress.tls }}
+                  number: 8000
+  {{- with .Values.ingress.tls }}
   tls:
     {{- toYaml . | nindent 4 }}
   {{- end }}
