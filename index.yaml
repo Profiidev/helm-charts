@@ -23,15 +23,6 @@ entries:
     version: v0.1.0
   positron:
   - apiVersion: v2
-    created: "2025-11-28T20:37:57.09746154Z"
-    description: A Personal Website.
-    digest: c891cd22eed4d668b12bdabf38e3e6deb42fd0a00b1941c63249fe1b2ea9f1cd
-    name: positron
-    type: application
-    urls:
-    - https://github.com/Profiidev/helm-charts/releases/download/positron-v0.1.27/positron-v0.1.27.tgz
-    version: v0.1.27
-  - apiVersion: v2
     created: "2025-11-28T13:32:23.944100311Z"
     description: A Personal Website.
     digest: a608cf175c506b8747f885eee0eb04facf1b0d6cc50d1d30e686b13160d069a7
