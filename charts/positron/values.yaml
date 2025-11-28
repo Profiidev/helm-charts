@@ -13,10 +13,7 @@ extraVolumeMounts:
     name: cluster-ca-cert
     readOnly: true
 
-podLabels:
-  nats-access: "true"
-  minio-access: "true"
-  postgres-access: "true"
+podLabels: {}
 
 replicaCount: 1
 ingress:
