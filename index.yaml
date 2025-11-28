@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   auto-clean-bot:
   - apiVersion: v2
+    created: "2025-11-28T20:41:59.774767891Z"
+    description: A Bot to automatically clean discord messages after a certain time
+      from channels.
+    digest: a250bb1eef76ad0bb8b0bfc067aecd88228790b94f1a0524b9e5873c670fd39e
+    name: auto-clean-bot
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/auto-clean-bot-v0.1.1/auto-clean-bot-v0.1.1.tgz
+    version: v0.1.1
+  - apiVersion: v2
     created: "2025-10-29T17:39:02.922093365Z"
     description: A Bot to automatically clean discord messages after a certain time
       from channels.
@@ -68,6 +78,15 @@ entries:
     version: v0.1.20
   proton:
   - apiVersion: v2
+    created: "2025-11-28T20:42:00.375279086Z"
+    description: A Minecraft Launcher.
+    digest: 8f295d2d1460051206c4d6469825399338b1242a746b20dafb3df1aa83af4aad
+    name: proton
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/proton-v0.2.8/proton-v0.2.8.tgz
+    version: v0.2.8
+  - apiVersion: v2
     created: "2025-10-29T17:39:03.277118832Z"
     description: A Minecraft Launcher.
     digest: 37a2bf5adc4e65b58e760604157b076ccfec5de93e010da72445b333903619b7
@@ -113,4 +132,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2025-11-28T20:37:57.097491587Z"
+generated: "2025-11-28T20:42:00.375307058Z"
