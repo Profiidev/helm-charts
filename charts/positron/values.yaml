@@ -18,9 +18,7 @@ podLabels: {}
 replicaCount: 1
 ingress:
   className: ingress-nginx
-  annotations:
-    nginx.ingress.kubernetes.io/auth-tls-secret: positron/cloudflare-ca-cert
-    nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+  annotations: {}
   host: profidev.io
   tls:
     - hosts:
