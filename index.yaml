@@ -23,6 +23,15 @@ entries:
     version: v0.1.0
   positron:
   - apiVersion: v2
+    created: "2025-11-29T19:05:50.534829632Z"
+    description: A Personal Website.
+    digest: f7fb7f2662dde8ef2aa42f2c510788e2c1fc6dcdb5ce2832b4ded758ad3a9c35
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-v0.1.32/positron-v0.1.32.tgz
+    version: v0.1.32
+  - apiVersion: v2
     created: "2025-11-29T00:01:45.219947831Z"
     description: A Personal Website.
     digest: d673399155aa58083d2dc8e0a81931e92c9bb7895b98b8b44a445f1a95210ab5
@@ -114,6 +123,15 @@ entries:
     version: v0.1.20
   proton:
   - apiVersion: v2
+    created: "2025-11-29T19:05:50.797327853Z"
+    description: A Minecraft Launcher.
+    digest: b449f17bf09bd2dd0c5afd5d36359aa5a900de061493cd62788850e8e3bd5ca6
+    name: proton
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/proton-v0.2.9/proton-v0.2.9.tgz
+    version: v0.2.9
+  - apiVersion: v2
     created: "2025-11-28T20:42:00.375279086Z"
     description: A Minecraft Launcher.
     digest: 8f295d2d1460051206c4d6469825399338b1242a746b20dafb3df1aa83af4aad
@@ -168,4 +186,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2025-11-29T00:01:45.219995811Z"
+generated: "2025-11-29T19:05:50.797412089Z"
