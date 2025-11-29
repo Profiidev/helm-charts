@@ -17,7 +17,7 @@ spec:
       http:
         paths:
           - pathType: ImplementationSpecific
-            path: "/backend/(.*)"
+            path: {{ .Values.backend.ingress.path | default "/backend/(.*)" }}
             backend:
               service:
                 name: {{ .Chart.Name }}-backend
