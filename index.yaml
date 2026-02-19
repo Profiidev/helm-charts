@@ -132,6 +132,15 @@ entries:
     version: v0.1.20
   proton:
   - apiVersion: v2
+    created: "2026-02-19T09:33:46.72375223Z"
+    description: A Minecraft Launcher.
+    digest: 85f238ce0a1af927b4282ac69e842d6ff3906e6d5af7b9d3f49f86e4370237f4
+    name: proton
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/proton-v0.2.11/proton-v0.2.11.tgz
+    version: v0.2.11
+  - apiVersion: v2
     created: "2026-01-27T20:56:50.25608967Z"
     description: A Minecraft Launcher.
     digest: 0a28b1b660e370907a1e547fe94c98745cee652b761834d72c8a0b161ef95639
@@ -204,4 +213,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-01-27T20:56:50.256139805Z"
+generated: "2026-02-19T09:33:46.723804798Z"
