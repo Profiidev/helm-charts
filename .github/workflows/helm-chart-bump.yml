@@ -20,7 +20,8 @@ jobs:
           chart_version=${{ github.event.client_payload.chart_version }}
           echo "Bumping version for $chart_name to $chart_version"
           sed -i "s/^version: .*/version: $chart_version/" charts/$chart_name/Chart.yaml
-        
+          sed -i "s/^appVersion: .*/appVersion: $chart_version/" charts/$chart_name/Chart.yaml
+
       - name: Create PR
         uses: peter-evans/create-pull-request@v8
         with:
