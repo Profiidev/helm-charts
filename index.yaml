@@ -32,6 +32,17 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/auto-clean-bot-v0.1.0/auto-clean-bot-v0.1.0.tgz
     version: v0.1.0
+  hibernation:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2026-03-26T18:15:47.277600877Z"
+    description: A Nix Binary Cache
+    digest: e003f205243f76c37b7af62a958b350c4932138ccaf0f678adef2c36a496f189
+    name: hibernation
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/hibernation-v0.0.1/hibernation-v0.0.1.tgz
+    version: v0.0.1
   positron:
   - apiVersion: v2
     created: "2026-03-07T11:09:48.312811505Z"
@@ -266,4 +277,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-03-26T18:10:39.042970894Z"
+generated: "2026-03-26T18:15:47.277680697Z"
