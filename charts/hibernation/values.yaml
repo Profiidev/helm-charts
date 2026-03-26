@@ -1,0 +1,27 @@
+secret:
+  storeName: cluster-secret-store
+  path: db/hibernation
+
+extraVolumes:
+  - name: cluster-ca-cert
+    secret:
+      defaultMode: 420
+      secretName: cluster-ca-cert
+extraVolumeMounts:
+  - mountPath: /etc/ssl/certs/e11529a0.0
+    subPath: e11529a0.0
+    name: cluster-ca-cert
+    readOnly: true
+
+podLabels: {}
+
+replicaCount: 1
+ingress:
+  className: ingress-nginx
+  annotations: {}
+  host: profidev.io
+  tls:
+    - hosts:
+        - profidev.io
+        - "*.profi.dev"
+      secretName: cloudflare-cert
