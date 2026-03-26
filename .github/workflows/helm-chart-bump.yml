@@ -16,20 +16,34 @@ jobs:
       - name: Bump chart version
         id: bump_chart
         run: |
-          chart_name=${{ github.event.client_payload.chart_name }}
-          chart_version=${{ github.event.client_payload.chart_version }}
-          echo "Bumping version for $chart_name to $chart_version"
-          sed -i "s/^version: .*/version: $chart_version/" charts/$chart_name/Chart.yaml
-          sed -i "s/^appVersion: .*/appVersion: $chart_version/" charts/$chart_name/Chart.yaml
+          CHART_NAME=${{ github.event.client_payload.chart_name }}
+          NEW_APP_VERSION=${{ github.event.client_payload.chart_version }}
+          CHART_PATH="charts/$CHART_NAME/Chart.yaml"
+
+          echo "Processing chart: $CHART_NAME with new version: $NEW_APP_VERSION"
+
+          CURRENT_CHART_VERSION=$(grep '^version:' $CHART_PATH | awk '{print $2}')
+          NEW_CHART_VERSION=$(echo $CURRENT_CHART_VERSION | awk -F . '{$NF = $NF + 1;} 1' OFS=.)
+
+          echo "Current chart version: $CURRENT_CHART_VERSION"
+          echo "New chart version: $NEW_CHART_VERSION"
+
+          sed -i "s/^version: .*/version: $NEW_CHART_VERSION/" $CHART_PATH
+          sed -i "s/^appVersion: .*/appVersion: $NEW_APP_VERSION/" $CHART_PATH
+
+          echo "CHART_VERSION=$NEW_CHART_VERSION" >> $GITHUB_ENV
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.PERSONAL_TOKEN }}
-          commit-message: "Bump chart version for ${{ github.event.client_payload.chart_name }} to ${{ github.event.client_payload.chart_version }}"
-          branch: chore/bump-chart-version-${{ github.event.client_payload.chart_name }}-${{ github.event.client_payload.chart_version }}
-          title: "Bump chart version for ${{ github.event.client_payload.chart_name }} to ${{ github.event.client_payload.chart_version }}"
-          body: "This PR bumps the chart version for ${{ github.event.client_payload.chart_name }} to ${{ github.event.client_payload.chart_version }}."
+          commit-message: "Bump chart version for ${{ github.event.client_payload.chart_name }} to ${{ steps.bump_chart.outputs.CHART_VERSION }}"
+          branch: chore/bump-chart-version-${{ github.event.client_payload.chart_name }}-${{ steps.bump_chart.outputs.CHART_VERSION }}
+          title: "Bump ${{ github.event.client_payload.chart_name }}: Chart ${{ steps.bump_chart.outputs.CHART_VERSION }} App ${{ github.event.client_payload.chart_version }}"
+          body: |
+            Automated version bump:
+            - **Chart Version**: ${{ steps.bump_chart.outputs.CHART_VERSION }}
+            - **App Version**: ${{ github.event.client_payload.chart_version }}
           base: main
           sign-commits: true
           labels: bump-chart
