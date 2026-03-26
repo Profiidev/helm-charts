@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Chart.Name }}
-          image: ghcr.io/profiidev/positron/{{ .Chart.Name }}:{{ .Chart.Version }}
+          image: ghcr.io/profiidev/positron/{{ .Chart.Name }}:{{ .Chart.AppVersion }}
           imagePullPolicy: Always
           name: {{ .Chart.Name }}
           resources:

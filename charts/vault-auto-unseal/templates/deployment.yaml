@@ -14,7 +14,7 @@ spec:
       labels:
         app: {{ .Chart.Name }}
     spec:
-      containers: {{ $default_tag := replace " " "" (cat "vault-auto-unseal-" .Chart.Version) }}
+      containers: {{ $default_tag := replace " " "" (cat "vault-auto-unseal-" .Chart.AppVersion) }}
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ default $default_tag .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}

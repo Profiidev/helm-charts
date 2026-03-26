@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Chart.Name }}-bot
-          image: ghcr.io/profiidev/{{ .Chart.Name }}/bot:{{ .Chart.Version }}
+          image: ghcr.io/profiidev/{{ .Chart.Name }}/bot:{{ .Chart.AppVersion }}
           imagePullPolicy: Always
           name: {{ .Chart.Name }}-bot
           resources:

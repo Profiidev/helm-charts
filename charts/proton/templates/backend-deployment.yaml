@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Chart.Name }}-backend
-          image: ghcr.io/profiidev/proton/{{ .Chart.Name }}-backend:{{ .Chart.Version }}
+          image: ghcr.io/profiidev/proton/{{ .Chart.Name }}-backend:{{ .Chart.AppVersion }}
           imagePullPolicy: Always
           name: {{ .Chart.Name }}-backend
           resources:
