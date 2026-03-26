@@ -2,5 +2,5 @@ apiVersion: v2
 name: positron
 description: A Personal Website.
 type: application
-version: v0.1.34-patch.1
+version: v0.1.35
 appVersion: v0.1.34
