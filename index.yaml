@@ -46,6 +46,16 @@ entries:
   hibernation:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2026-03-26T19:42:00.255208364Z"
+    description: A Nix Binary Cache
+    digest: ce500f94c5d0ec03b7d0bbb5bbd10f29fd07ea50aff903f027f8d0fbe51b962c
+    name: hibernation
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/hibernation-v0.1.0/hibernation-v0.1.0.tgz
+    version: v0.1.0
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2026-03-26T19:39:33.920349363Z"
     description: A Nix Binary Cache
     digest: c75f34c36ed892e558614eae34dd3fd7cfd5e77bfb3693e1e42e2c346c3f3357
@@ -331,4 +341,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-03-26T19:39:33.920433931Z"
+generated: "2026-03-26T19:42:00.255290467Z"
