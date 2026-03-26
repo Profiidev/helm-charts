@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   auto-clean-bot:
   - apiVersion: v2
+    appVersion: v0.1.1
+    created: "2026-03-26T18:44:50.088520113Z"
+    description: A Bot to automatically clean discord messages after a certain time
+      from channels.
+    digest: 432a0ab056ad9a83e14d5a24b55955d987f91c77e40184526a6e83eeeb821d1e
+    name: auto-clean-bot
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/auto-clean-bot-v0.1.2/auto-clean-bot-v0.1.2.tgz
+    version: v0.1.2
+  - apiVersion: v2
     created: "2025-11-28T20:41:59.774767891Z"
     description: A Bot to automatically clean discord messages after a certain time
       from channels.
@@ -44,6 +55,16 @@ entries:
     - https://github.com/Profiidev/helm-charts/releases/download/hibernation-v0.0.1/hibernation-v0.0.1.tgz
     version: v0.0.1
   positron:
+  - apiVersion: v2
+    appVersion: v0.1.34
+    created: "2026-03-26T18:44:50.262106648Z"
+    description: A Personal Website.
+    digest: 567dc48ac6a738d606001d683e6932d311ebe40884eec264b46ca62aa1ff1639
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-v0.1.35/positron-v0.1.35.tgz
+    version: v0.1.35
   - apiVersion: v2
     created: "2026-03-07T11:09:48.312811505Z"
     description: A Personal Website.
@@ -173,6 +194,16 @@ entries:
     version: v0.1.20
   proton:
   - apiVersion: v2
+    appVersion: v0.2.11
+    created: "2026-03-26T18:44:50.452461921Z"
+    description: A Minecraft Launcher.
+    digest: 19766a1c936a66402993518ddf25d5ea8f9a6bceb3cba11ecaa7f0f44c78ca36
+    name: proton
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/proton-v0.2.12/proton-v0.2.12.tgz
+    version: v0.2.12
+  - apiVersion: v2
     created: "2026-02-19T09:33:46.72375223Z"
     description: A Minecraft Launcher.
     digest: 85f238ce0a1af927b4282ac69e842d6ff3906e6d5af7b9d3f49f86e4370237f4
@@ -241,6 +272,19 @@ entries:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.12/vault-auto-unseal-v0.1.12.tgz
     version: v0.1.12
   - apiVersion: v2
+    appVersion: v0.1.1
+    created: "2026-03-26T18:44:50.616513172Z"
+    description: Automatic unseal for HashiCorp Vault.
+    digest: 41188397c898f3ef2ce197d395f8b5e08aebf3888a89d2234881cd10ae3f6dbd
+    maintainers:
+    - email: mail@profidev.io
+      name: ProfiDev
+    name: vault-auto-unseal
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.2/vault-auto-unseal-v0.1.2.tgz
+    version: v0.1.2
+  - apiVersion: v2
     created: "2025-10-29T18:16:50.13589514Z"
     description: Automatic unseal for HashiCorp Vault.
     digest: 6891be77c0dfbf66c4f009a3ca0113e9a8f90f7bd89dcd624f70709e28d98246
@@ -277,4 +321,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-03-26T18:15:47.277680697Z"
+generated: "2026-03-26T18:44:50.616695262Z"
