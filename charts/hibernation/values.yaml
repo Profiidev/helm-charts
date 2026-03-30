@@ -20,6 +20,7 @@ ingress:
   className: ingress-nginx
   annotations: {}
   host: profidev.io
+  virtualHostRouting: true
   tls:
     - hosts:
         - profidev.io
