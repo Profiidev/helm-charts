@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ichwilldich-sep
+description: idk why
+type: application
+version: v0.1.0
+appVersion: v0.0.1
