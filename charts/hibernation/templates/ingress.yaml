@@ -23,6 +23,18 @@ spec:
                 name: {{ .Chart.Name }}
                 port:
                   number: 8000
+  {{- if .Values.ingress.virtualHostRouting }}
+    - host: "*.{{ .Values.ingress.host }}"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: {{ .Chart.Name }}
+                port:
+                  number: 8000
+  {{- end }}
   {{- with .Values.ingress.tls }}
   tls:
     {{- toYaml . | nindent 4 }}
