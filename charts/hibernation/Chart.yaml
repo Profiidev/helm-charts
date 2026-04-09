@@ -2,5 +2,5 @@ apiVersion: v2
 name: hibernation
 description: A Nix Binary Cache
 type: application
-version: v0.1.8
-appVersion: v0.2.4
+version: v0.1.9
+appVersion: v0.2.5
