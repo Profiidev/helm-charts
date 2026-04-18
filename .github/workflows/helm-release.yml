@@ -14,17 +14,21 @@ jobs:
       contents: write
 
     steps:
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3
+        id: app-token
+        with:
+          client-id: ${{ secrets.COMMIT_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.COMMIT_BOT_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          token: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Configure Git user
         run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config user.name "profidev-commit-bot[bot]"
+          git config user.email "profidev-commit-bot[bot]@users.noreply.github.com"
       - name: Run chart-releaser job
         uses: helm/chart-releaser-action@v1
         env:
-          CR_TOKEN: "${{ secrets.PERSONAL_TOKEN }}"
+          CR_TOKEN: "${{ steps.app-token.outputs.token }}"

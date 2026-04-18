@@ -8,9 +8,12 @@ jobs:
   bump-chart:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3
+        id: app-token
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          client-id: ${{ secrets.COMMIT_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.COMMIT_BOT_PRIVATE_KEY }}
+      - name: Checkout code
         uses: actions/checkout@v6
 
       - name: Bump chart version
@@ -31,12 +34,12 @@ jobs:
           sed -i "s/^version: .*/version: $NEW_CHART_VERSION/" $CHART_PATH
           sed -i "s/^appVersion: .*/appVersion: $NEW_APP_VERSION/" $CHART_PATH
 
-          echo "CHART_VERSION=$NEW_CHART_VERSION" >> $GITHUB_ENV
+          echo "CHART_VERSION=$NEW_CHART_VERSION" >> $GITHUB_OUTPUT
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: "Bump chart version for ${{ github.event.client_payload.chart_name }} to ${{ steps.bump_chart.outputs.CHART_VERSION }}"
           branch: chore/bump-chart-version-${{ github.event.client_payload.chart_name }}-${{ steps.bump_chart.outputs.CHART_VERSION }}
           title: "Bump ${{ github.event.client_payload.chart_name }}: Chart ${{ steps.bump_chart.outputs.CHART_VERSION }} App ${{ github.event.client_payload.chart_version }}"
