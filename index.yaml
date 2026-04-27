@@ -57,6 +57,18 @@ entries:
   headscale:
   - apiVersion: v2
     appVersion: 0.6.0
+    created: "2026-04-27T15:08:49.094252954Z"
+    description: The headplane Helm chart provides an easy way to deploy a Headscale
+      UI with headplane, including an embedded Tailscale relay. This chart simplifies
+      the setup of a private networking solution using Kubernetes.
+    digest: 46fb4f75c184a3ed0750adca9ebd882d801c3f720bbd2f86d2156f66e0b99eca
+    name: headscale
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/headscale-0.1.2/headscale-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.6.0
     created: "2026-04-27T15:03:27.677574316Z"
     description: The headplane Helm chart provides an easy way to deploy a Headscale
       UI with headplane, including an embedded Tailscale relay. This chart simplifies
@@ -561,4 +573,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-04-27T15:03:27.677644631Z"
+generated: "2026-04-27T15:08:49.094412432Z"
