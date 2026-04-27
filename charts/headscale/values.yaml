@@ -31,7 +31,7 @@ headplane:
       # Path to the Headscale config file
       config_path: "/etc/headscale/config.yaml"
       # Enable strict config mode
-      config_strict: "true"
+      config_strict: true
     integration:
       kubernetes:
         # Enable Kubernetes integration
