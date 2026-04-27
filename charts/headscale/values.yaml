@@ -1,7 +1,7 @@
 # Headplane UI and API configuration
 headplane:
   # The container image for Headplane
-  image: ghcr.io/tale/headplane:0.6.2-shell
+  image: ghcr.io/tale/headplane:0.6.2
   oidc:
     # Enable OIDC integration for Headplane
     enabled: false

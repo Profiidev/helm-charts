@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: headscale
+  labels:
+    app: headscale
+spec:
+  selector:
+    matchLabels:
+      app: headscale
+  template:
+    metadata:
+      labels:
+        app: headscale
+    spec:
+      serviceAccountName: headplane
+      initContainers:
+      - name: copy-headscale-config
+        image: busybox:latest
+        command:
+          - sh
+          - -c
+          - |
+            cp /headscale-config/config.yaml /headscale-data/config.yaml
+            cp /headscale-acl/acl.hujson /headscale-data/acl.hujson
+        volumeMounts:
+          - name: headscale-data
+            mountPath: /headscale-data
+          - name: headscale-config
+            mountPath: /headscale-config
+          - name: headscale-acl
+            mountPath: /headscale-acl
+      containers:
+      - name: headscale
+        image: {{ .Values.headscale.image }}
+        args:
+          - serve
+        volumeMounts:
+        - name: headscale-data
+          mountPath: /etc/headscale
+        envFrom:
+          {{- if .Values.headscale.oidc.enabled }}
+          - secretRef:
+              name: {{ .Values.headscale.oidc.secret_name }}
+          {{- end }}
+          {{- with .Values.headscale.envFrom }}
+          {{- toYaml . | nindent 10 }}
+          {{- end }}
+      volumes:
+        - name: headscale-config
+          secret:
+            secretName: headscale-config
+        - name: headscale-data
+          persistentVolumeClaim:
+            claimName: headscale-data
+        - name: headscale-acl
+          configMap:
+            name: headscale-acl
