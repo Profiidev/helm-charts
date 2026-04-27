@@ -44,7 +44,7 @@ spec:
               fi
 
               echo "Generating Headscale API token..."
-              TOKEN=$(kubectl -n {{ .Release.Namespace }} exec -i headplane-0 -c headscale -- headscale apikeys create -e 100y)
+              TOKEN=$(kubectl -n {{ .Release.Namespace }} exec -i headplane-0 -c headscale -- headscale apikeys create -e 100y | tr -d '\n\r')
 
               if [ -z "$TOKEN" ]; then
                 echo "Failed to retrieve API token"
@@ -52,6 +52,6 @@ spec:
               fi
 
               echo "Updating headscale-api-token secret with generated API token..."
-              kubectl patch secret headscale-api-token -n {{ .Release.Namespace }} -p="{\"data\":{\"HEADPLANE_OIDC__HEADSCALE_API_KEY\":\"$(echo -n "$TOKEN" | base64)\"}}"
+              kubectl patch secret headscale-api-token -n {{ .Release.Namespace }} -p="{\"data\":{\"HEADPLANE_OIDC__HEADSCALE_API_KEY\":\"$(echo -n "$TOKEN" | base64 | tr -d '\n\r')\"}}"
               
               echo "Successfully updated headscale-api-token secret with real API token"
