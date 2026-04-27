@@ -11,8 +11,6 @@ headplane:
     disable_api_key_login: true
     # OIDC token endpoint auth method
     token_endpoint_auth_method: "client_secret_post"
-    # OIDC redirect URI
-    redirect_uri: "https://your-headplane-admin-domain.com/admin/oidc/callback"
     # OIDC client ID
     client_id: "REPLACE_IT_WITH_YOUR_OIDC_CLIENT_ID_FOR_HEADPLANE"
     # Name of the secret containing OIDC credentials
@@ -25,6 +23,7 @@ headplane:
       port: 3000
       # Use secure cookies (should be true in production)
       cookie_secure: true
+      base_url: "https://vpn.example.com"
     headscale:
       # The URL for the Headscale server
       url: "https://vpn.example.com"
