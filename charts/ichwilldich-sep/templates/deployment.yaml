@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Chart.Name }}
-          image: "ghcr.io/profiidev/ichwilldich-sep/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
+          image: "ghcr.io/profiidev/ichwilldich-sep/{{ .Chart.Name }}:v{{ .Chart.AppVersion }}"
           imagePullPolicy: Always
           name: {{ .Chart.Name }}
           resources:
