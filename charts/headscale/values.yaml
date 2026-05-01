@@ -150,7 +150,7 @@ relay:
   # Enable the Tailscale relay
   enabled: false
   # The container image for the Tailscale relay
-  image: ghcr.io/tailscale/tailscale:v1.80.3
+  image: ghcr.io/tailscale/tailscale:v1.96.5@sha256:dbeff02d2337344b351afac203427218c4d0a06c43fc10a865184063498472a6
   config:
     # This is an insecure field, be sure to NOT use a reusable auth key here
     # if not provided, will use TS_AUTHKEY from tailscale-auth secret
