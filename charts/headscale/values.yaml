@@ -1,7 +1,7 @@
 # Headplane UI and API configuration
 headplane:
   # The container image for Headplane
-  image: ghcr.io/tale/headplane:0.6.2
+  image: ghcr.io/tale/headplane:0.6.2@sha256:cfb0807609198f90b9793e46e3b243b257bcdcef032847a3204d10201435b8dc
   oidc:
     # Enable OIDC integration for Headplane
     enabled: false
@@ -47,7 +47,7 @@ headplane:
 # Headscale server configuration
 headscale:
   # The container image for Headscale
-  image: headscale/headscale:0.28.0
+  image: headscale/headscale:0.28.0@sha256:51b1b9182bb6219e97374fa89af6b9320d6f87ecc739e328d5357ea4fa7a5ce3
 
   # Access Control List configuration (JSON format)
   # Only applicable if headscale.config.policy.mode is 'file'
