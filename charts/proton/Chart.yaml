@@ -1,6 +1,0 @@
-apiVersion: v2
-name: proton
-description: A Minecraft Launcher.
-type: application
-version: 0.2.13
-appVersion: 0.2.11
