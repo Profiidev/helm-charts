@@ -302,6 +302,16 @@ entries:
   kubevirt:
   - apiVersion: v2
     appVersion: v1.8.2
+    created: "2026-05-11T17:26:27.708552249Z"
+    description: A Helm chart for the KubeVirt
+    digest: ce8b45dea2824e5298e0233da52f17efa4c3e30afe98efe5b8cf3c9357e4a0d2
+    name: kubevirt
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/kubevirt-1.8.3/kubevirt-1.8.3.tgz
+    version: 1.8.3
+  - apiVersion: v2
+    appVersion: v1.8.2
     created: "2026-05-11T15:02:28.90690404Z"
     description: A Helm chart for the KubeVirt
     digest: ca8eef5d114aa1691e412a80a297c859159ae5d02fe32caa53a9d453b1a05523
@@ -631,4 +641,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-11T15:02:29.064225632Z"
+generated: "2026-05-11T17:26:27.708679297Z"
