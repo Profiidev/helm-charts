@@ -54,6 +54,30 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/auto-clean-bot-v0.1.0/auto-clean-bot-v0.1.0.tgz
     version: v0.1.0
+  cdi:
+  - apiVersion: v2
+    appVersion: v1.64.0
+    created: "2026-05-11T18:18:01.199604814Z"
+    description: CDI - Containerized Data Importer for KubeVirt - Import, clone, and
+      manage VM disk images on Kubernetes
+    digest: 84f096e34b6a7d791d8926fc8da525bc98095c2a25529cbb3b150a4863f0566d
+    name: cdi
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/cdi-0.1.0/cdi-0.1.0.tgz
+    version: 0.1.0
+  cdi-crd:
+  - apiVersion: v2
+    appVersion: v1.64.0
+    created: "2026-05-11T18:18:01.37351397Z"
+    description: CDI - Containerized Data Importer for KubeVirt - Import, clone, and
+      manage VM disk images on Kubernetes
+    digest: c85bf6c8c09c309286dd319b54963ad9013d1da09c14318e9bb2464b602e963e
+    name: cdi-crd
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/cdi-crd-0.1.0/cdi-crd-0.1.0.tgz
+    version: 0.1.0
   headscale:
   - apiVersion: v2
     appVersion: 0.6.0
@@ -641,4 +665,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-11T17:26:27.708679297Z"
+generated: "2026-05-11T18:18:01.373650685Z"
