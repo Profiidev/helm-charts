@@ -299,6 +299,28 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/ichwilldich-sep-v0.1.0/ichwilldich-sep-v0.1.0.tgz
     version: v0.1.0
+  kubevirt:
+  - apiVersion: v2
+    appVersion: v1.8.2
+    created: "2026-05-11T15:02:28.90690404Z"
+    description: A Helm chart for the KubeVirt
+    digest: ca8eef5d114aa1691e412a80a297c859159ae5d02fe32caa53a9d453b1a05523
+    name: kubevirt
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/kubevirt-1.8.2/kubevirt-1.8.2.tgz
+    version: 1.8.2
+  kubevirt-crd:
+  - apiVersion: v2
+    appVersion: v1.8.2
+    created: "2026-05-11T15:02:29.064093923Z"
+    description: A Helm chart for the KubeVirt CRD
+    digest: dad42b50fafaa10fe6170f48f50af8ea512f38ddcec52a431b44422d3499ae68
+    name: kubevirt-crd
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/kubevirt-crd-1.8.2/kubevirt-crd-1.8.2.tgz
+    version: 1.8.2
   positron:
   - apiVersion: v2
     appVersion: 0.1.35
@@ -609,4 +631,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-04T06:24:14.858182391Z"
+generated: "2026-05-11T15:02:29.064225632Z"
