@@ -14,8 +14,7 @@ metadata:
 spec:
   certificateRotateStrategy: {{- toYaml .Values.kubevirt.certificateRotateStrategy | nindent 4 }}
   configuration:
-    developerConfiguration:
-      featureGates: {{- toYaml .Values.kubevirt.configuration.developerConfiguration.featureGates | nindent 8 }}
+    developerConfiguration: {{- toYaml .Values.kubevirt.configuration.developerConfiguration | nindent 6 }}
     imagePullPolicy: {{ .Values.kubevirt.configuration.imagePullPolicy }}
   customizeComponents: {{- toYaml .Values.kubevirt.customizeComponents | nindent 4 }}
   imagePullPolicy: {{ .Values.kubevirt.imagePullPolicy }}
