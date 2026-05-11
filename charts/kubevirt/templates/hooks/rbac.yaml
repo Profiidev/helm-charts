@@ -1,0 +1,91 @@
+{{- if and .Values.hooks.enable }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "kubevirt.labels" . | nindent 4 }}
+  name: {{ include "kubevirt.hook.rbac.namespace" . }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    resourceNames:
+      - {{ .Release.Namespace }}
+    verbs:
+      - get
+      - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "kubevirt.labels" . | nindent 4 }}
+  name: {{ include "kubevirt.hook.rbac.namespace" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "kubevirt.hook.rbac.namespace" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "kubevirt.hook.serviceaccount" . }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade,pre-delete
+    "helm.sh/hook-weight": "2"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "kubevirt.labels" . | nindent 4 }}
+  name: {{ include "kubevirt.hook.rbac.hook" . }}
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    verbs:
+      - get
+      - patch
+  - apiGroups:
+      - kubevirt.io
+    resources:
+      - kubevirts
+    verbs:
+      - get
+      - list
+      - watch
+      - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade,pre-delete
+    "helm.sh/hook-weight": "2"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "kubevirt.labels" . | nindent 4 }}
+  name: {{ include "kubevirt.hook.rbac.hook" . }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "kubevirt.hook.rbac.hook" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "kubevirt.hook.serviceaccount" . }}
+  namespace: {{ .Release.Namespace }}
+{{- end }}
