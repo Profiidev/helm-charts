@@ -37,6 +37,8 @@ garage:
   rpcBindAddr: "[::]:3901"
   # -- If not given, a random secret will be generated and stored in a Secret object
   rpcSecret: ""
+
+  adminToken: ""
   # -- If you want to provide an rpcSecret within an existing k8s secret,
   # specify the secret name here, and store the value under the secret key `rpcSecret`
   # the default secret will not be created
@@ -197,16 +199,16 @@ ingress:
         # kubernetes.io/tls-acme: "true"
       labels: {}
       hosts:
-      # --  wildcard website access with bucket name prefix
-       - host: "*.web.garage.tld"
-         paths:
-           - path: /
-             pathType: Prefix
-       # -- specific bucket access with FQDN bucket
-       - host: "mywebpage.example.com"
-         paths:
-           - path: /
-             pathType: Prefix
+        # --  wildcard website access with bucket name prefix
+        - host: "*.web.garage.tld"
+          paths:
+            - path: /
+              pathType: Prefix
+        # -- specific bucket access with FQDN bucket
+        - host: "mywebpage.example.com"
+          paths:
+            - path: /
+              pathType: Prefix
       tls: []
       #  - secretName: my-garage-cluster-tls
       #    hosts:

@@ -31,13 +31,13 @@ data:
     bootstrap_peers = [
     {{- range $index, $peer := .Values.garage.bootstrapPeers }}
     {{- if $index}}, {{ end }}{{ $peer | quote }}
-    {{ end }} 
+    {{ end }}
     ]
 
     {{- if .Values.garage.additionalTopLevelConfig }}
     {{ .Values.garage.additionalTopLevelConfig | nindent 4 }}
     {{- end }}
-  
+
     [kubernetes_discovery]
     namespace = "{{ .Release.Namespace }}"
     service_name = "{{ include "garage.fullname" . }}"
@@ -55,6 +55,7 @@ data:
 
     [admin]
     api_bind_addr = "{{ .Values.garage.admin.apiBindAddr }}"
+    admin_token = "__ADMIN_TOKEN_REPLACE__"
     {{- if .Values.monitoring.tracing.sink }}
     trace_sink = "{{ .Values.monitoring.tracing.sink }}"
     {{- end }}
