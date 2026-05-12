@@ -81,6 +81,25 @@ entries:
   garage:
   - apiVersion: v2
     appVersion: v2.3.0
+    created: "2026-05-12T20:51:11.867151114Z"
+    description: S3-compatible object store for small self-hosted geo-distributed
+      deployments
+    digest: 9ecc50362699187d922345b2ae7202a73d06b2b9b05736e7f6759c039c2687c5
+    home: https://garagehq.deuxfleurs.fr/
+    icon: https://garagehq.deuxfleurs.fr/images/garage-logo.svg
+    keywords:
+    - geo-distributed
+    - read-after-write-consistency
+    - s3-compatible
+    name: garage
+    sources:
+    - https://git.deuxfleurs.fr/Deuxfleurs/garage.git
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/garage-0.9.4/garage-0.9.4.tgz
+    version: 0.9.4
+  - apiVersion: v2
+    appVersion: v2.3.0
     created: "2026-05-12T20:13:10.020901269Z"
     description: S3-compatible object store for small self-hosted geo-distributed
       deployments
@@ -685,4 +704,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-12T20:13:10.021077418Z"
+generated: "2026-05-12T20:51:11.867283951Z"
