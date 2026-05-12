@@ -78,6 +78,26 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/cdi-crd-0.1.0/cdi-crd-0.1.0.tgz
     version: 0.1.0
+  garage:
+  - apiVersion: v2
+    appVersion: v2.3.0
+    created: "2026-05-12T20:13:10.020901269Z"
+    description: S3-compatible object store for small self-hosted geo-distributed
+      deployments
+    digest: 660c9d94cf06a1ae172bbba11844dc154bd9c0d4d75255c0bc3d30a7c5bf310d
+    home: https://garagehq.deuxfleurs.fr/
+    icon: https://garagehq.deuxfleurs.fr/images/garage-logo.svg
+    keywords:
+    - geo-distributed
+    - read-after-write-consistency
+    - s3-compatible
+    name: garage
+    sources:
+    - https://git.deuxfleurs.fr/Deuxfleurs/garage.git
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/garage-0.9.3/garage-0.9.3.tgz
+    version: 0.9.3
   headscale:
   - apiVersion: v2
     appVersion: 0.6.0
@@ -665,4 +685,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-11T18:18:01.373650685Z"
+generated: "2026-05-12T20:13:10.021077418Z"
