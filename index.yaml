@@ -333,6 +333,16 @@ entries:
     version: v0.0.1
   ichwilldich-sep:
   - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2026-05-28T14:32:01.530470666Z"
+    description: idk why
+    digest: 53074bcb1981c20039e495ffea995c88e289fc1f8fcf75351a03efd5213ad18c
+    name: ichwilldich-sep
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/ichwilldich-sep-0.1.5/ichwilldich-sep-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2026-05-28T13:29:07.425330981Z"
     description: idk why
@@ -774,4 +784,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-28T13:29:07.61985253Z"
+generated: "2026-05-28T14:32:01.53060202Z"
