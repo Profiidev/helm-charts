@@ -193,6 +193,16 @@ entries:
   hibernation:
   - apiVersion: v2
     appVersion: 0.2.5
+    created: "2026-05-28T13:29:07.225761347Z"
+    description: A Nix Binary Cache
+    digest: 14104f39f3009428c855367740b22c09f085727e64cd612db5d0b62dff2b4db4
+    name: hibernation
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/hibernation-0.2.0/hibernation-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.2.5
     created: "2026-04-27T08:57:42.522895492Z"
     description: A Nix Binary Cache
     digest: 17bda622092827417744829aaf222eed1f31338571348797066eb9a55e5edaff
@@ -324,6 +334,16 @@ entries:
   ichwilldich-sep:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2026-05-28T13:29:07.425330981Z"
+    description: idk why
+    digest: 6ef8507b9f40657e72365a6e904d57f4520385bc5cd9f9af1ef39bb70c51bd84
+    name: ichwilldich-sep
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/ichwilldich-sep-0.1.4/ichwilldich-sep-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2026-04-27T08:57:42.653224466Z"
     description: idk why
     digest: e6fb3f75c8c03d89877a070102479eb04a7f788a61accc24dd10af8584947f3e
@@ -395,6 +415,16 @@ entries:
     - https://github.com/Profiidev/helm-charts/releases/download/kubevirt-crd-1.8.2/kubevirt-crd-1.8.2.tgz
     version: 1.8.2
   positron:
+  - apiVersion: v2
+    appVersion: 0.2.3
+    created: "2026-05-28T13:29:07.619459924Z"
+    description: A Personal Website.
+    digest: c7768ccb8ca40f11a4ce2ba508584bf4d22f9e09f45857463f3e88de02625704
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-0.2.0/positron-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 0.2.3
     created: "2026-05-27T10:31:23.361465948Z"
@@ -744,4 +774,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-27T10:31:23.361703946Z"
+generated: "2026-05-28T13:29:07.61985253Z"
