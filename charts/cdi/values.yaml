@@ -80,6 +80,9 @@ cdi:
     # Leave empty to use the default storage class
     scratchSpaceStorageClass: ""
 
+    # -- podResourceRequirements
+    podResourceRequirements: {}
+
     # -- Filesystem overhead settings per storage class
     # Example:
     #   global: "0.055"

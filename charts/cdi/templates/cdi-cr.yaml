@@ -26,6 +26,11 @@ spec:
     scratchSpaceStorageClass: {{ . }}
     {{- end }}
 
+    {{- with .podResourceRequirements }}
+    podResourceRequirements:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+
     {{- with .filesystemOverhead }}
     filesystemOverhead:
       {{- toYaml . | nindent 6 }}
