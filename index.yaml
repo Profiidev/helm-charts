@@ -57,6 +57,17 @@ entries:
   cdi:
   - apiVersion: v2
     appVersion: v1.64.0
+    created: "2026-05-28T20:02:19.494428298Z"
+    description: CDI - Containerized Data Importer for KubeVirt - Import, clone, and
+      manage VM disk images on Kubernetes
+    digest: 17142f4d740d9850b04e2eb5da7867849985bb7a3d15e9f3f47f54f2c35f5a3d
+    name: cdi
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/cdi-0.1.1/cdi-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v1.64.0
     created: "2026-05-11T18:18:01.199604814Z"
     description: CDI - Containerized Data Importer for KubeVirt - Import, clone, and
       manage VM disk images on Kubernetes
@@ -814,4 +825,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-28T19:29:59.592770691Z"
+generated: "2026-05-28T20:02:19.494543714Z"
