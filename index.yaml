@@ -3,6 +3,17 @@ entries:
   auto-clean-bot:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2026-05-29T16:13:08.32676529Z"
+    description: A Bot to automatically clean discord messages after a certain time
+      from channels.
+    digest: 8ebf3b57a92034da6671468e4cabfb7d0b72a64bad8f2d0aa15f5626073364d0
+    name: auto-clean-bot
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/auto-clean-bot-0.1.4/auto-clean-bot-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2026-04-27T08:57:42.255039359Z"
     description: A Bot to automatically clean discord messages after a certain time
       from channels.
@@ -204,6 +215,16 @@ entries:
   hibernation:
   - apiVersion: v2
     appVersion: 0.3.1
+    created: "2026-05-29T16:13:08.640027614Z"
+    description: A Nix Binary Cache
+    digest: 0a3c3aa7e98ca2e84dea5e5268f0d5d7303443fa2d3cce0d13bb2259d7a02a17
+    name: hibernation
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/hibernation-0.2.3/hibernation-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 0.3.1
     created: "2026-05-28T19:29:59.59250278Z"
     description: A Nix Binary Cache
     digest: 76a0269370a4313007e8a8fca95455aff3419a810d8e541aa42c2799dc33cd87
@@ -365,6 +386,16 @@ entries:
   ichwilldich-sep:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2026-05-29T16:13:08.90457959Z"
+    description: idk why
+    digest: b0adae9b49d2bc0fb47630ceee78f7add8802c317bb990b88c9268c177e1aef3
+    name: ichwilldich-sep
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/ichwilldich-sep-0.1.6/ichwilldich-sep-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2026-05-28T14:32:01.530470666Z"
     description: idk why
     digest: 53074bcb1981c20039e495ffea995c88e289fc1f8fcf75351a03efd5213ad18c
@@ -456,6 +487,16 @@ entries:
     - https://github.com/Profiidev/helm-charts/releases/download/kubevirt-crd-1.8.2/kubevirt-crd-1.8.2.tgz
     version: 1.8.2
   positron:
+  - apiVersion: v2
+    appVersion: 0.2.4
+    created: "2026-05-29T16:13:09.160308949Z"
+    description: A Personal Website.
+    digest: fce3c5753aa4fb11811689621272c4c9a3bc4626f53e13735bd29398fa3ae822
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-0.2.2/positron-0.2.2.tgz
+    version: 0.2.2
   - apiVersion: v2
     appVersion: 0.2.4
     created: "2026-05-28T15:30:13.649589925Z"
@@ -825,4 +866,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-05-28T20:02:19.494543714Z"
+generated: "2026-05-29T16:13:09.160623306Z"
