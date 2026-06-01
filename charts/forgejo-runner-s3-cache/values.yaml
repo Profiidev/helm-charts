@@ -1,0 +1,21 @@
+secret:
+  storeName: cluster-secret-store
+  path: tools/forgejo-runner
+
+extraVolumes: []
+extraVolumeMounts: []
+
+podLabels: {}
+
+replicaCount: 1
+
+ingress:
+  enabled: false
+  className: ingress-nginx
+  annotations: {}
+  host: profidev.io
+  tls:
+    - hosts:
+        - profidev.io
+        - "*.profi.dev"
+      secretName: cloudflare-cert
