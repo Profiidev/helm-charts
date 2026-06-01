@@ -103,6 +103,16 @@ entries:
   forgejo-runner-s3-cache:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2026-06-01T11:10:31.89379201Z"
+    description: S3 cache for forgejo runners
+    digest: e3a801563960c339e442d5bdbb10e2c7aaa3cce1b29c76bfb484ad346d662cb9
+    name: forgejo-runner-s3-cache
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/forgejo-runner-s3-cache-0.1.1/forgejo-runner-s3-cache-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2026-06-01T10:22:17.768439293Z"
     description: S3 cache for forgejo runners
     digest: e9231616575666c8f52ca1e6b5ffb192adfd500b54dc77dcb77e45f79572efcb
@@ -877,4 +887,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-06-01T10:22:17.768680415Z"
+generated: "2026-06-01T11:10:31.893927553Z"
