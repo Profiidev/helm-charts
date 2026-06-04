@@ -414,6 +414,17 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/hibernation-v0.0.1/hibernation-v0.0.1.tgz
     version: v0.0.1
+  ichtrackdich:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2026-06-04T17:06:25.677068156Z"
+    description: ichtrackdich
+    digest: 787432319b81b083354479b2b5acae43150e2dcc5dc00df5e89fb3fa1d67df01
+    name: ichtrackdich
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/ichtrackdich-0.1.0/ichtrackdich-0.1.0.tgz
+    version: 0.1.0
   ichwilldich-sep:
   - apiVersion: v2
     appVersion: 0.1.1
@@ -897,4 +908,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-06-01T11:38:46.333564583Z"
+generated: "2026-06-04T17:06:25.677265743Z"
