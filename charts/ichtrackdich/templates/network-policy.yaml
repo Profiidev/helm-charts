@@ -19,6 +19,7 @@ spec:
       destination:
         ports:
           - 8000
+          - 10000
   egress:
     - action: Allow
       protocol: TCP
