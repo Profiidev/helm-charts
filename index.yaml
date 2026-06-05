@@ -550,6 +550,16 @@ entries:
     version: 1.8.2
   positron:
   - apiVersion: v2
+    appVersion: 0.2.5
+    created: "2026-06-05T09:44:28.109174778Z"
+    description: A Personal Website.
+    digest: 5d86286a4320304b5b477c509e18319056c9068056b2061d43ab82f7608c43be
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-0.2.3/positron-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
     appVersion: 0.2.4
     created: "2026-05-29T16:13:09.160308949Z"
     description: A Personal Website.
@@ -928,4 +938,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-06-04T19:26:40.639312671Z"
+generated: "2026-06-05T09:44:28.109342818Z"
