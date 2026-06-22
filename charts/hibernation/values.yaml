@@ -26,3 +26,9 @@ ingress:
         - profidev.io
         - "*.profi.dev"
       secretName: cloudflare-cert
+
+metrics:
+  enabled: false
+  serviceMonitor:
+    enabled: false
+    interval: 60s

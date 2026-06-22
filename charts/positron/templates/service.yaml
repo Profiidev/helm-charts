@@ -7,7 +7,6 @@ metadata:
   labels:
     app: {{ .Chart.Name }}
 spec:
-spec:
   ports:
     - port: 8000
       protocol: TCP
