@@ -4,11 +4,20 @@ kind: Service
 metadata:
   name: {{ .Chart.Name }}
   namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Chart.Name }}
 spec:
   ports:
     - port: 8000
       protocol: TCP
       targetPort: 8000
+      name: http
+    {{- if .Values.metrics.enabled }}
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      name: metrics
+    {{- end }}
   selector:
     app: {{ .Chart.Name }}
   type: ClusterIP

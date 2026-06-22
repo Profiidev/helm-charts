@@ -28,9 +28,25 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Chart.Name }}
+          {{- if .Values.metrics.enabled }}
+          env:
+            - name: METRICS_ENABLED
+              value: "true"
+            - name: METRICS_PORT
+              value: "8080"
+            - name: METRICS_NAME
+              value: "positron"
+          {{- end }}
           image: "ghcr.io/profiidev/hibernation/{{ .Chart.Name }}:v{{ .Chart.AppVersion }}"
           imagePullPolicy: Always
           name: {{ .Chart.Name }}
+          ports:
+            - containerPort: 8000
+              name: http
+          {{- if .Values.metrics.enabled }}
+            - containerPort: 8080
+              name: metrics
+          {{- end }}
           resources:
             limits:
               cpu: 1000m
