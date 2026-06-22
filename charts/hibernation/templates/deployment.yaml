@@ -35,7 +35,7 @@ spec:
             - name: METRICS_PORT
               value: "8080"
             - name: METRICS_NAME
-              value: "positron"
+              value: "hibernation"
           {{- end }}
           image: "ghcr.io/profiidev/hibernation/{{ .Chart.Name }}:v{{ .Chart.AppVersion }}"
           imagePullPolicy: Always
