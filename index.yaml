@@ -466,6 +466,16 @@ entries:
     version: v0.0.1
   ichtrackdich:
   - apiVersion: v2
+    appVersion: 0.0.7
+    created: "2026-07-01T20:32:15.400715246Z"
+    description: ichtrackdich
+    digest: 0ee8362578fb422143be83074f406fce5006d96028518851777508d0beb5a864
+    name: ichtrackdich
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/ichtrackdich-0.1.7/ichtrackdich-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     appVersion: 0.0.6
     created: "2026-06-30T08:26:12.213865722Z"
     description: ichtrackdich
@@ -1198,4 +1208,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-06-30T08:26:12.214052078Z"
+generated: "2026-07-01T20:32:15.40092023Z"
