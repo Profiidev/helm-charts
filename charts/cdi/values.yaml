@@ -26,7 +26,7 @@ operator:
     # -- Image repository
     repository: kubevirt/cdi-operator
     # -- Image tag (defaults to chart appVersion)
-    tag: "v1.64.0"
+    tag: "v1.64.0@sha256:3a119a73bc1c9313a71289ff990eb87408cdd8a436925ef4656ecb5574127169"
     # -- Image pull policy
     pullPolicy: IfNotPresent
 
