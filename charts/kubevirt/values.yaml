@@ -93,7 +93,7 @@ hooks:
     # -- hook image repository
     repository: portainer/kubectl-shell
     # -- hook image tag
-    tag: '2.39.0@sha256:0fa397afe650ff0b07ea709abf423e02c38bbbdd311c8d7170d02f1f0015354e'
+    tag: '2.44.0@sha256:8fbeeb844307ecb52752e2a9611ad707bceeb6e7aba58af2c6dea4897f2444b3'
     # -- hook image pull policy
     pullPolicy: IfNotPresent
   # -- Time to wait for kubevirt CR to be ready
