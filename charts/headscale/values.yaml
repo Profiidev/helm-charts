@@ -1,7 +1,7 @@
 # Headplane UI and API configuration
 headplane:
   # The container image for Headplane
-  image: ghcr.io/tale/headplane:0.6.2@sha256:cfb0807609198f90b9793e46e3b243b257bcdcef032847a3204d10201435b8dc
+  image: ghcr.io/tale/headplane:0.7.0@sha256:7bd6523a14567a43eb4ffa1e95e3d95456b8539c9d081757df3f228b9e836fb5
   oidc:
     # Enable OIDC integration for Headplane
     enabled: false
@@ -47,7 +47,7 @@ headplane:
 # Headscale server configuration
 headscale:
   # The container image for Headscale
-  image: headscale/headscale:0.28.0@sha256:51b1b9182bb6219e97374fa89af6b9320d6f87ecc739e328d5357ea4fa7a5ce3
+  image: headscale/headscale:v0.29.3@sha256:0e7f1c6e4ce6c2a2a001103ecd3fa645a045adf30ac8a5234fe037b43000cd72
 
   # Access Control List configuration (JSON format)
   # Only applicable if headscale.config.policy.mode is 'file'
@@ -150,7 +150,7 @@ relay:
   # Enable the Tailscale relay
   enabled: false
   # The container image for the Tailscale relay
-  image: ghcr.io/tailscale/tailscale:v1.96.5@sha256:dbeff02d2337344b351afac203427218c4d0a06c43fc10a865184063498472a6
+  image: ghcr.io/tailscale/tailscale:v1.98.10@sha256:cdf5612ded5be1344f1a704b8c5e53496db97376bb533e5e15f141e48bf60cc0
   config:
     # This is an insecure field, be sure to NOT use a reusable auth key here
     # if not provided, will use TS_AUTHKEY from tailscale-auth secret
