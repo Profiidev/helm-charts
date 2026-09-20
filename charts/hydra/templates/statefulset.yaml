@@ -1,0 +1,165 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  # The evaluator and the queue runner are singletons; never scale this up.
+  replicas: 1
+  serviceName: {{ .Chart.Name }}
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/hydra-config: {{ include (print $.Template.BasePath "/external-secret.yaml") . | sha256sum }}
+      labels:
+        app: {{ .Chart.Name }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      # A fresh PVC mounted at /nix would hide the image's own store, so the
+      # container could not even start. Seed it, and top it up after an image
+      # upgrade; identical store paths are skipped.
+      initContainers:
+        - name: seed-nix-store
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" .Chart.AppVersion) }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /bin/sh
+            - -c
+            - mkdir -p /mnt/nix/store && cp -a -n /nix/store/. /mnt/nix/store/
+          volumeMounts:
+            - name: nix
+              mountPath: /mnt/nix
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" .Chart.AppVersion) }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ .Chart.Name }}
+          env:
+            - name: HYDRA_ADMIN_USER
+              value: {{ .Values.hydra.adminUser | quote }}
+            {{- with .Values.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          ports:
+            - containerPort: 3000
+              name: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}
+            failureThreshold: {{ .Values.startupProbe.failureThreshold }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 2
+          volumeMounts:
+            - name: nix
+              mountPath: /nix
+            - name: data
+              mountPath: /var/lib/hydra
+            - name: hydra-config
+              mountPath: /etc/hydra/hydra.conf
+              subPath: hydra.conf
+              readOnly: true
+            - name: config
+              mountPath: /etc/nix/nix.conf
+              subPath: nix.conf
+              readOnly: true
+            - name: config
+              mountPath: /etc/nix/machines
+              subPath: machines
+              readOnly: true
+            {{- if .Values.hydra.oidc.enabled }}
+            - name: oidc
+              mountPath: /etc/hydra/oidc
+              readOnly: true
+            {{- end }}
+            {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Chart.Name }}
+        - name: hydra-config
+          secret:
+            secretName: {{ .Chart.Name }}
+            items:
+              - key: hydra.conf
+                path: hydra.conf
+        {{- if .Values.hydra.oidc.enabled }}
+        - name: oidc
+          secret:
+            secretName: {{ .Chart.Name }}
+            items:
+              {{- range $name, $provider := .Values.hydra.oidc.providers }}
+              - key: {{ $provider.clientSecretKey }}
+                path: {{ $name }}
+              {{- end }}
+        {{- end }}
+        {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: nix
+      spec:
+        accessModes:
+          {{- toYaml .Values.persistence.nix.accessModes | nindent 10 }}
+        resources:
+          requests:
+            storage: {{ .Values.persistence.nix.size | quote }}
+        {{- with .Values.persistence.nix.storageClassName }}
+        storageClassName: {{ . | quote }}
+        {{- end }}
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          {{- toYaml .Values.persistence.data.accessModes | nindent 10 }}
+        resources:
+          requests:
+            storage: {{ .Values.persistence.data.size | quote }}
+        {{- with .Values.persistence.data.storageClassName }}
+        storageClassName: {{ . | quote }}
+        {{- end }}

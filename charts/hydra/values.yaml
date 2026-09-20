@@ -1,0 +1,161 @@
+image:
+  # ghcr.io/profiidev/hydra-docker/hydra      local accounts, Google, GitHub
+  # ghcr.io/profiidev/hydra-docker/hydra-oidc the same plus generic OIDC
+  repository: ghcr.io/profiidev/hydra-docker/hydra
+  # Defaults to v<Chart.AppVersion>.
+  tag: ""
+  pullPolicy: Always
+
+# Vault path holding the secret values. Every key of the extracted entry is
+# exposed to the container as an environment variable, so it must contain:
+#   HYDRA_DBI             dbi:Pg:dbname=hydra;host=postgres;user=hydra;password=...
+#   HYDRA_DATABASE_URL    postgres://hydra:...@postgres:5432/hydra
+#   HYDRA_ADMIN_PASSWORD  optional, creates/updates hydra.adminUser on every start
+# plus the client secret, and optionally the client id, of every OIDC
+# provider; see hydra.oidc.providers.
+#
+# hydra.conf is rendered into the same secret, so it can reference those keys.
+secret:
+  storeName: cluster-secret-store
+  path: apps/hydra
+  refreshInterval: 5m
+
+hydra:
+  # Public URL, used for links in the UI and as the OIDC redirect base.
+  baseUri: https://hydra.profidev.io
+  notificationSender: hydra@profidev.io
+  # Set to true when an ingress or proxy terminates TLS in front of Hydra.
+  usingFrontendProxy: true
+  maxServers: 10
+  maxOutputSize: 4294967296
+  # Local admin account. The password comes from HYDRA_ADMIN_PASSWORD; leave
+  # that key out of the secret to stop managing a local admin.
+  adminUser: admin
+  # Only the hydra-oidc image serves this; it is the queue runner's REST API.
+  queueRunnerEndpoint: ""
+  oidc:
+    enabled: false
+    # Each entry adds a "Sign in with ..." button. clientSecretKey names the
+    # key in the external secret holding that provider's client secret.
+    # Register <baseUri>/oidc-callback/<name> as the redirect URI.
+    providers: {}
+    #  keycloak:
+    #    displayName: Keycloak
+    #    discoveryUrl: https://sso.example.com/realms/main/.well-known/openid-configuration
+    #    # Either a literal client id, or clientIdKey to read one from the
+    #    # external secret. clientIdKey wins when both are set.
+    #    clientId: hydra
+    #    clientIdKey: OIDC_CLIENT_ID_KEYCLOAK
+    #    clientSecretKey: OIDC_CLIENT_SECRET_KEYCLOAK
+    #    extraScopes: ""
+    #    # Claim carrying the user's roles or groups. Default hydra_roles,
+    #    # whose values must already be Hydra role names.
+    #    rolesClaim: groups
+    #    # Translates the claim's values into Hydra roles. Without it the
+    #    # claim's values are used as role names directly. Valid roles:
+    #    # admin, restart-jobs, bump-to-front, cancel-build, create-projects,
+    #    # eval-jobset.
+    #    roleMapping:
+    #      hydra-admins:
+    #        - admin
+    #        - restart-jobs
+    #      hydra-users:
+    #        - eval-jobset
+  # Appended verbatim to hydra.conf.
+  extraConfig: ""
+
+nix:
+  experimentalFeatures:
+    - nix-command
+    - flakes
+  # true needs securityContext.privileged, the sandbox uses mount namespaces.
+  sandbox: false
+  maxJobs: 4
+  # 0 means "all cores of the node".
+  cores: 0
+  substituters:
+    - https://cache.nixos.org
+  trustedPublicKeys:
+    - cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+  # Build machines. "localhost" builds inside this pod.
+  machines: |
+    localhost x86_64-linux - 8 1 kvm,nixos-test,big-parallel,benchmark - -
+  # Appended verbatim to nix.conf.
+  extraConfig: ""
+
+persistence:
+  # The Nix store. Holds every build output, so size it generously.
+  nix:
+    size: 200Gi
+    storageClassName: ""
+    accessModes:
+      - ReadWriteOnce
+  # HYDRA_DATA: build logs, runtime state.
+  data:
+    size: 20Gi
+    storageClassName: ""
+    accessModes:
+      - ReadWriteOnce
+
+resources:
+  limits:
+    cpu: "8"
+    memory: 16Gi
+  requests:
+    cpu: "1"
+    memory: 2Gi
+
+# Nix builds need mount namespaces when nix.sandbox is true.
+securityContext:
+  privileged: false
+
+# Hydra needs several minutes on first start: schema migration, then the
+# evaluator and queue runner come up behind the web server.
+startupProbe:
+  periodSeconds: 5
+  failureThreshold: 120
+
+podLabels: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+extraEnv: []
+terminationGracePeriodSeconds: 60
+
+extraVolumes:
+  - name: cluster-ca-cert
+    secret:
+      defaultMode: 420
+      secretName: cluster-ca-cert
+extraVolumeMounts:
+  - mountPath: /etc/ssl/certs/e11529a0.0
+    subPath: e11529a0.0
+    name: cluster-ca-cert
+    readOnly: true
+
+ingress:
+  enabled: true
+  className: ingress-nginx
+  annotations: {}
+  host: hydra.profidev.io
+  tls:
+    - hosts:
+        - hydra.profidev.io
+      secretName: cloudflare-cert
+
+networkPolicy:
+  enabled: true
+  order: 10
+  # Where ingress traffic is allowed from.
+  ingressFrom:
+    namespaceSelector: kubernetes.io/metadata.name == 'kube-system'
+    selector: app.kubernetes.io/name == 'rke2-ingress-nginx'
+  # Cluster-internal destinations Hydra must reach, such as PostgreSQL.
+  internalPorts:
+    - 5432
+  # Ports reachable on the public internet: binary caches and HTTPS git over
+  # 443, git and remote builders over SSH on 22.
+  externalPorts:
+    - 443
+    - 22
+  extraEgress: []
