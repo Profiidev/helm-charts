@@ -1,0 +1,50 @@
+{{- if .Values.networkPolicy.enabled }}
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Chart.Name }}-ingress
+  namespace: {{ .Release.Namespace }}
+spec:
+  order: {{ .Values.networkPolicy.order }}
+  selector: app == '{{ .Chart.Name }}'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - action: Allow
+      protocol: TCP
+      source:
+        namespaceSelector: {{ .Values.networkPolicy.ingressFrom.namespaceSelector }}
+        selector: {{ .Values.networkPolicy.ingressFrom.selector }}
+      destination:
+        ports:
+          - 3000
+  egress:
+    - action: Allow
+      protocol: UDP
+      destination:
+        ports:
+          - 53
+    {{- with .Values.networkPolicy.internalPorts }}
+    - action: Allow
+      protocol: TCP
+      destination:
+        ports:
+          {{- toYaml . | nindent 10 }}
+    {{- end }}
+    {{- with .Values.networkPolicy.externalPorts }}
+    - action: Allow
+      protocol: TCP
+      destination:
+        notNets:
+          - 10.0.0.0/8
+          - 172.16.0.0/12
+          - 192.168.0.0/16
+        ports:
+          {{- toYaml . | nindent 10 }}
+    {{- end }}
+    {{- with .Values.networkPolicy.extraEgress }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+{{- end }}

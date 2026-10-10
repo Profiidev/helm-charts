@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace }}
+data:
+  nix.conf: |
+    experimental-features = {{ join " " .Values.nix.experimentalFeatures }}
+    # Builds run as root in the container; there are no nixbld users.
+    build-users-group =
+    sandbox = {{ .Values.nix.sandbox }}
+    max-jobs = {{ .Values.nix.maxJobs }}
+    cores = {{ .Values.nix.cores }}
+    substituters = {{ join " " .Values.nix.substituters }}
+    trusted-public-keys = {{ join " " .Values.nix.trustedPublicKeys }}
+    {{- with .Values.nix.extraConfig }}
+    {{ . | nindent 4 }}
+    {{- end }}
+  machines: |
+    {{- .Values.nix.machines | nindent 4 }}
