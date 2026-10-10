@@ -557,6 +557,19 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/hibernation-v0.0.1/hibernation-v0.0.1.tgz
     version: v0.0.1
+  hydra:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2026-10-10T08:10:09.095885511Z"
+    description: NixOS Hydra continuous build system
+    digest: 5ae5cc8e1916955b78fc728b4e3b8dd1aed2d4e69c20ae86a8ff593d4c350437
+    name: hydra
+    sources:
+    - https://github.com/Profiidev/hydra-docker
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/hydra-0.1.0/hydra-0.1.0.tgz
+    version: 0.1.0
   ichtrackdich:
   - apiVersion: v2
     appVersion: 0.0.8
@@ -1381,4 +1394,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-09-14T16:31:33.561409343Z"
+generated: "2026-10-10T08:10:09.095997218Z"
