@@ -16,11 +16,15 @@ on:
       - edited
 
 env:
+  HAS_COMMIT_BOT_KEY: ${{ secrets.COMMIT_BOT_PRIVATE_KEY != '' }}
   cache_dir: /tmp/renovate/cache/renovate/repository
   cache_key: renovate-cache
 
 jobs:
   renovate:
+    permissions:
+      id-token: write
+      contents: read
     runs-on: ubuntu-latest
     if: >
       github.event_name != 'issues' &&
@@ -46,16 +50,24 @@ jobs:
           sudo chown -R 12021:0 /tmp/renovate/
           ls -R $cache_dir
 
+      - uses: profiidev/gluon@d715c4a8bd804db764307ad041e73c1c60ec7382 # v0
+        id: gluon
+        if: env.HAS_COMMIT_BOT_KEY != 'true'
+        with:
+          url: https://gluon.profidev.io
+          profile: renovate
+      # Fallback while the broker is down: re-add the COMMIT_BOT_PRIVATE_KEY secret.
       - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3
         id: app-token
+        if: env.HAS_COMMIT_BOT_KEY == 'true'
         with:
-          client-id: ${{ secrets.COMMIT_BOT_CLIENT_ID }}
+          client-id: Iv23liM4eWCXa0R0IMG9
           private-key: ${{ secrets.COMMIT_BOT_PRIVATE_KEY }}
 
       - name: Run Renovate
         uses: renovatebot/github-action@43b963bf5dd5e57f1f95c59765a018d782870211 # v46.3.11
         with:
-          token: ${{ steps.app-token.outputs.token }}
+          token: ${{ steps.gluon.outputs.token || steps.app-token.outputs.token }}
         env:
           RENOVATE_PLATFORM_COMMIT: "enabled"
           RENOVATE_REPOSITORY_CACHE: "enabled"

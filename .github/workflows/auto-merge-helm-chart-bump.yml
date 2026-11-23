@@ -5,20 +5,34 @@ on:
     types:
       - labeled
 
+env:
+  HAS_COMMIT_BOT_KEY: ${{ secrets.COMMIT_BOT_PRIVATE_KEY != '' }}
+
 jobs:
   merge:
+    permissions:
+      id-token: write
+      contents: read
     if: ${{ github.event.label.name == 'bump-chart' && github.event.pull_request.user.login == 'profidev-commit-bot[bot]' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: profiidev/gluon@d715c4a8bd804db764307ad041e73c1c60ec7382 # v0
+        id: gluon
+        if: env.HAS_COMMIT_BOT_KEY != 'true'
+        with:
+          url: https://gluon.profidev.io
+          profile: pr-automation
+      # Fallback while the broker is down: re-add the COMMIT_BOT_PRIVATE_KEY secret.
       - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3
         id: app-token
+        if: env.HAS_COMMIT_BOT_KEY == 'true'
         with:
-          client-id: ${{ secrets.COMMIT_BOT_CLIENT_ID }}
+          client-id: Iv23liM4eWCXa0R0IMG9
           private-key: ${{ secrets.COMMIT_BOT_PRIVATE_KEY }}
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Enable auto-merge for PR
         run: gh pr merge ${{ github.event.pull_request.number }} --auto --squash
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.gluon.outputs.token || steps.app-token.outputs.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
