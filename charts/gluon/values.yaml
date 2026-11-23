@@ -1,0 +1,34 @@
+secret:
+  storeName: cluster-secret-store
+  # Vault KV path holding the GitHub App private key(s), e.g. main-key.pem
+  path: tools/gluon
+
+podLabels: {}
+
+# Replay protection and rate limits are in-memory, so keep a single replica.
+replicaCount: 1
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations: {}
+  host: gluon.profidev.io
+  tls: []
+
+# Proxies whose X-Forwarded-For is trusted for the audit log client IP.
+trustedProxies: []
+
+metrics:
+  serviceMonitor:
+    enabled: false
+    interval: 60s
+
+# Broker configuration as TOML (see the gluon README). Kept as a string because
+# Helm turns numeric values into floats, which would break repository and owner IDs.
+# The [server] table is rendered by the chart (see trustedProxies); do not add one here.
+# Key files are mounted at /run/secrets/gluon/<vault field>.
+config: |
+  [[apps]]
+  name = "main"
+  client_id = "CHANGE_ME"
+  keys = [{ source = "file", path = "/run/secrets/gluon/main-key.pem" }]

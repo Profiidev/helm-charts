@@ -1,0 +1,6 @@
+apiVersion: v2
+name: gluon
+description: GitHub App token broker (OIDC to scoped installation tokens)
+type: application
+version: 0.1.0
+appVersion: 0.1.0
