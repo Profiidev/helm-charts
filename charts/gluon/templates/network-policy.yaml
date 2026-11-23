@@ -1,0 +1,41 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  order: 10
+  selector: app == '{{ .Chart.Name }}'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - action: Allow
+      protocol: TCP
+      source:
+        namespaceSelector: kubernetes.io/metadata.name == 'kube-system'
+        selector: app.kubernetes.io/name == 'rke2-traefik'
+      destination:
+        ports:
+          - 8000
+    - action: Allow
+      protocol: TCP
+      source:
+        namespaceSelector: kubernetes.io/metadata.name == '{{ .Values.networkPolicy.metricsNamespace }}'
+      destination:
+        ports:
+          - 9090
+    # Calico passes unmatched traffic on to later policies; stop it here.
+    - action: Deny
+  egress:
+    # GitHub API and OIDC issuers' JWKS.
+    - action: Allow
+      protocol: TCP
+      destination:
+        notNets:
+          - 10.0.0.0/8
+          - 172.16.0.0/12
+          - 192.168.0.0/16
+        ports:
+          - 443

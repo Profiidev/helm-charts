@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace }}
+data:
+  config.toml: |
+    [server]
+    reload_interval = "10s"
+    trusted_proxies = {{ .Values.trustedProxies | toJson }}
+
+{{ .Values.config | indent 4 }}
