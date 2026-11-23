@@ -20,14 +20,17 @@ spec:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
-          # Only the token API is public; health and metrics stay internal.
-          - pathType: Prefix
-            path: /api/v1/
+          # Only the two token endpoints are public; nothing else (health,
+          # metrics, unknown paths) is reachable from outside.
+          {{- range list "/api/v1/token" "/api/v1/exchange" }}
+          - pathType: Exact
+            path: {{ . }}
             backend:
               service:
-                name: {{ .Chart.Name }}
+                name: {{ $.Chart.Name }}
                 port:
                   number: 8000
+          {{- end }}
   {{- with .Values.ingress.tls }}
   tls:
     {{- toYaml . | nindent 4 }}
