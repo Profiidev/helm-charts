@@ -13,10 +13,15 @@ ingress:
   className: traefik
   annotations: {}
   host: gluon.profidev.io
+  # Required when ingress is enabled.
   tls: []
 
 # Proxies whose X-Forwarded-For is trusted for the audit log client IP.
 trustedProxies: []
+
+networkPolicy:
+  # Namespace allowed to scrape :9090.
+  metricsNamespace: metrics
 
 metrics:
   serviceMonitor:

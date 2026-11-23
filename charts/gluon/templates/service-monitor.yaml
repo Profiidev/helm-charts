@@ -12,6 +12,6 @@ spec:
       app: {{ .Chart.Name }}
   endpoints:
     - port: metrics
-      path: /metrics
+      path: /
       interval: {{ .Values.metrics.serviceMonitor.interval }}
 {{- end }}

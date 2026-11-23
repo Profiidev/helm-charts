@@ -30,6 +30,14 @@ spec:
           env:
             - name: CONFIG_PATH
               value: /etc/gluon/config.toml
+            - name: PORT
+              value: "8000"
+            - name: METRICS_ENABLED
+              value: "true"
+            - name: METRICS_PORT
+              value: "9090"
+            - name: METRICS_NAME
+              value: {{ .Chart.Name | quote }}
           ports:
             - containerPort: 8000
               name: http
@@ -56,24 +64,26 @@ spec:
               memory: 64Mi
           startupProbe:
             httpGet:
-              path: /healthz
+              path: /api/health
               port: 8000
             periodSeconds: 1
             failureThreshold: 30
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /api/health
               port: 8000
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /api/readyz
               port: 8000
             periodSeconds: 10
             timeoutSeconds: 2
             failureThreshold: 2
+      # The broker never talks to the Kubernetes API.
+      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65532

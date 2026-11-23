@@ -7,8 +7,6 @@ metadata:
 data:
   config.toml: |
     [server]
-    listen = "0.0.0.0:8000"
-    metrics_listen = "0.0.0.0:9090"
     reload_interval = "10s"
     trusted_proxies = {{ .Values.trustedProxies | toJson }}
 
