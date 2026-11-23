@@ -211,6 +211,17 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/garage-0.9.3/garage-0.9.3.tgz
     version: 0.9.3
+  gluon:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2026-11-23T11:22:45.428966205Z"
+    description: GitHub App token broker (OIDC to scoped installation tokens)
+    digest: e8a8d1dc478ffad798b987b929e141671c58a26caabb1c388a500ce86b307669
+    name: gluon
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/gluon-0.1.0/gluon-0.1.0.tgz
+    version: 0.1.0
   headscale:
   - apiVersion: v2
     appVersion: 0.6.0
@@ -1504,4 +1515,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-11-10T14:09:48.611620906Z"
+generated: "2026-11-23T11:22:45.429248693Z"
