@@ -32,3 +32,4 @@ metrics:
   serviceMonitor:
     enabled: false
     interval: 60s
+    metricRelabelings: []
