@@ -213,6 +213,16 @@ entries:
     version: 0.9.3
   gluon:
   - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2026-11-26T21:40:16.221050191Z"
+    description: GitHub App token broker (OIDC to scoped installation tokens)
+    digest: 06fdf18d3c7cbf5630e02df97c9753a456d7b2f47c2f46299f60f4fc4d631e97
+    name: gluon
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/gluon-0.1.2/gluon-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 0.1.1
     created: "2026-11-23T12:37:37.847260585Z"
     description: GitHub App token broker (OIDC to scoped installation tokens)
@@ -1555,4 +1565,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-11-26T21:37:59.198117779Z"
+generated: "2026-11-26T21:40:16.221286041Z"
