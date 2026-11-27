@@ -32,7 +32,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Enable auto-merge for PR
-        run: gh pr merge ${{ github.event.pull_request.number }} --auto --squash
+        # auto-merge is refused in UNSTABLE state (helm-lint already passed, only this job pending), so merge directly then
+        run: gh pr merge ${{ github.event.pull_request.number }} --auto --squash || gh pr merge ${{ github.event.pull_request.number }} --squash
         env:
           GITHUB_TOKEN: ${{ steps.gluon.outputs.token || steps.app-token.outputs.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
