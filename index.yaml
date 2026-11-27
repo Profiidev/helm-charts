@@ -340,6 +340,16 @@ entries:
   hibernation:
   - apiVersion: v2
     appVersion: 0.4.6
+    created: "2026-11-27T12:06:27.930392832Z"
+    description: A Nix Binary Cache
+    digest: 21add2312953cd49fa54a6dbc5782c486b16739a9876c675823790c29ee92063
+    name: hibernation
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/hibernation-0.3.16/hibernation-0.3.16.tgz
+    version: 0.3.16
+  - apiVersion: v2
+    appVersion: 0.4.6
     created: "2026-11-26T20:54:44.020920014Z"
     description: A Nix Binary Cache
     digest: 9e98509feced7388610dff09083999b65232a8aa3ce6e770b0500b18932c7757
@@ -926,6 +936,16 @@ entries:
     - https://github.com/Profiidev/helm-charts/releases/download/kubevirt-crd-1.8.2/kubevirt-crd-1.8.2.tgz
     version: 1.8.2
   positron:
+  - apiVersion: v2
+    appVersion: 0.3.7
+    created: "2026-11-27T12:06:28.045661936Z"
+    description: A Personal Website.
+    digest: c524c4b3f880b0b6b30b7dd550c20e45c4bbc4775512e83074ddfe7f07f8c0e9
+    name: positron
+    type: application
+    urls:
+    - https://github.com/Profiidev/helm-charts/releases/download/positron-0.2.30/positron-0.2.30.tgz
+    version: 0.2.30
   - apiVersion: v2
     appVersion: 0.3.7
     created: "2026-11-26T21:37:59.197803473Z"
@@ -1575,4 +1595,4 @@ entries:
     urls:
     - https://github.com/Profiidev/helm-charts/releases/download/vault-auto-unseal-v0.1.0/vault-auto-unseal-v0.1.0.tgz
     version: v0.1.0
-generated: "2026-11-26T22:16:22.235716945Z"
+generated: "2026-11-27T12:06:28.046014989Z"
